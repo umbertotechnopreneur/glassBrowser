@@ -11,7 +11,7 @@
     <!-- This is our outer window, the background changes dynamically at each refresh-->
     <section class="browser">
       <!-- === Title bar === -->
-      <section class="titleBar d-flex justify-start align-center">
+      <section class="titleBar">
         <!-- Would be nice if this works by darkening the background? -->
         <button id="toggler" class="darkLightThemeTogglerbutton">
           <svg id="dark" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="black" viewBox="0 0 16 16"
@@ -28,7 +28,7 @@
           </svg>
         </button>
 
-        <div>{{ browserTitle }}</div>
+        <div class="title">{{ browserTitle }}</div>
 
         <!-- Here we put the window actions -->
         <div class="actionButtons d-flex justify-end align-center">
@@ -63,7 +63,7 @@ const browserTitle = computed(() => 'Aginti - The gallery');
 const randomNumber = ref(Math.floor(Math.random() * 8) + 1);
 
 const backgroundStyle = computed(() => ({
-  backgroundImage: `url('./images/backgrounds/gallery${randomNumber.value}.jpg')`,
+  backgroundImage: `url('./images/backgrounds/background${randomNumber.value}.jpg')`,
   backgroundSize: 'cover',
 }));
 
@@ -131,11 +131,22 @@ onMounted(async () => {
   width: 100;
   padding: 4px;
   margin: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .titleBar .actionButtons {
   /* Nothing for now */
 } 
+
+.titleBar .title {
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+}
 
 .documentArea {
   border-radius: 12px;
