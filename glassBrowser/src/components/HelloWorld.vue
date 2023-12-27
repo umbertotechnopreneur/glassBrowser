@@ -10,6 +10,36 @@
   <v-container :style="backgroundStyle" fluid class=" d-flex justify-center align-center">
     <!-- This is our outer window, the background changes dynamically at each refresh-->
     <section class="browser">
+
+      <v-container v-show="showTools" class="adminBar">
+        <div class="title">Admin area</div>
+
+        <v-row>
+          <v-col cols="12">
+            <p>Hey pro tip: press the 'h' key anytime to show/hide the admin panel, so you can get your gorgeus screenshot
+              without any stupid stuff in it.<br />
+              Refresh the browser window to change the backgound image of the page.
+              Drop the image on the designed area or the 'browser document' to change it.</p>
+
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-text-field v-model="browserTitle" clearable hide-details="auto" label="Page title"></v-text-field>
+          </v-col>
+          <v-col cols="12" md="8" class="d-flex align-center">
+            <v-text-field v-model="imageUrl" clearable hide-details="auto"
+              label="Image url (local or whatever)"></v-text-field>
+            <v-btn class="mx-4" @drop.prevent="onFileDrop" @dragover.prevent>drop the screenshot here</v-btn>
+          </v-col>
+        </v-row>
+
+        <p class="text-caption"><b>Help wanted:</b> For <a href="https://aginti.it">aginti.it</a> (and other porjects) we
+          use this tool extensively. If you have time consider to add some features to it. Thanks for your contribution!
+        </p>
+
+        <p class="text-caption">For example what about 3d <a
+            href="https://polypane.app/css-3d-transform-examples">here</a> you can get some inspiration.</p>
+      </v-container>
+
       <!-- === Title bar === -->
       <section class="titleBar">
         <!-- Would be nice if this works by darkening the background? -->
@@ -45,7 +75,8 @@
       <!-- === Document area === -->
 
       <section class="documentArea">
-        <v-img cover src="../../images/yourScreenshot.jpg" class="theScreenShot" width="100%" height="100%"></v-img>
+        <img @drop.prevent="onFileDrop" @dragover.prevent id="screenShot" cover :src="imageUrl" class="theScreenShot"
+          width="100%" height="100%" />
       </section>
 
       <!-- === End Document area === -->
@@ -55,10 +86,12 @@
 </template>
 
 <script setup>
-import { ref, computed, nextTick } from 'vue';
+import { ref, computed } from 'vue';
 
 // Add here your variables values
-const browserTitle = computed(() => 'Aginti - The gallery');
+const browserTitle = ref('Default browser title');
+const showTools = ref(true);
+const imageUrl = ref('../../images/yourScreenshot.jpg');
 
 const randomNumber = ref(Math.floor(Math.random() * 17) + 1);
 
@@ -67,26 +100,63 @@ const backgroundStyle = computed(() => ({
   backgroundSize: 'cover',
 }));
 
+function onFileDrop(e) {
+  if (e.dataTransfer.files.length > 1) {
+    alert('Please drop only one file at a time');
+    return;
+  } else if (e.dataTransfer.files.length === 0) {
+    alert('Please drop a file');
+    return;
+  }
+
+  const file = e.dataTransfer.files[0];
+
+  let nameWithoutExtension = file.name.split('.').slice(0, -1).join('.');
+  browserTitle.value = nameWithoutExtension;
+
+  let reader = new FileReader();
+
+  reader.onload = function (e) {
+    let img = document.getElementById('screenShot');
+    img.src = e.target.result;
+  }
+
+  reader.readAsDataURL(file);
+}
+
 import { onMounted } from 'vue';
 
 onMounted(async () => {
+
+  document.addEventListener('keyup', function (event) {
+    if (event.key === 'h') {
+      console.log('The "h" key was pressed up.');
+
+      showTools.value = !showTools.value;
+    }
+  });
+
+  /*
   try {
+
     const VanillaTilt = await import('vanilla-tilt');
 
     nextTick(() => {
       VanillaTilt.init(document.querySelector('.browser'), {
-        max: 15,
+        max: 2,
         speed: 1000,
         glare: true,
-        scale: 1.1,
-        gyroscope: true,
-        "max-glare": 0.5,
+        transition: true,
+        scale: 1,
+        gyroscope: false,
+        "max-glare": 0.8,
       });
     });
 
   } catch (error) {
     throw ('Error loading VanillaTilt', error);
   }
+  */
 });
 </script>
 
@@ -127,6 +197,18 @@ onMounted(async () => {
   }
 }
 
+.title {
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+}
+
+.adminBar {
+  justify-content: space-between;
+}
+
 .titleBar {
   width: 100;
   padding: 4px;
@@ -138,14 +220,6 @@ onMounted(async () => {
 
 .titleBar .actionButtons {
   /* Nothing for now */
-}
-
-.titleBar .title {
-  font-size: 1.1rem;
-  letter-spacing: 0.1rem;
-  text-transform: uppercase;
-  color: white;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
 }
 
 .documentArea {
