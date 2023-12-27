@@ -60,7 +60,7 @@ import { ref, computed, nextTick } from 'vue';
 // Add here your variables values
 const browserTitle = computed(() => 'Aginti - The gallery');
 
-const randomNumber = ref(Math.floor(Math.random() * 8) + 1);
+const randomNumber = ref(Math.floor(Math.random() * 17) + 1);
 
 const backgroundStyle = computed(() => ({
   backgroundImage: `url('./images/backgrounds/background${randomNumber.value}.jpg')`,
@@ -138,7 +138,7 @@ onMounted(async () => {
 
 .titleBar .actionButtons {
   /* Nothing for now */
-} 
+}
 
 .titleBar .title {
   font-size: 1.1rem;
