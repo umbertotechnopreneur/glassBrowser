@@ -12,6 +12,8 @@ The aim is not only make it static but also dynamic in case you need to record a
 Some random ideas that someone could come up and fix:
 
  - Support dark/light theme, there is a button in the toolbar but does nothing
+ - Add the possibility to add an iframe or whatever and see your live site for demo?
+ - Navigation anyone? I will add back/next button I think, but their functionality is linked to the one above.
  - If I had any other idea I will write here...
 
 I keep it as basic as possible using only CSS.
