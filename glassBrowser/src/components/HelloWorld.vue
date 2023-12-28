@@ -9,7 +9,7 @@
 <template>
   <v-container :style="backgroundStyle" fluid class=" d-flex justify-center align-center">
     <!-- This is our outer window, the background changes dynamically at each refresh-->
-    <section class="browser">
+    <section class="browser" ref="browserSection">
 
       <v-container v-show="showTools" class="adminBar">
         <div class="title">Admin area</div>
@@ -29,6 +29,11 @@
             <v-text-field v-model="imageUrl" clearable hide-details="auto"
               label="Image url (local or whatever)"></v-text-field>
             <v-btn class="mx-4" @drop.prevent="onFileDrop" @dragover.prevent>drop the screenshot here</v-btn>
+          </v-col>
+          <v-col cols="12">
+            <v-textarea clearable label="Current browser CSS style" style="font-family: monospace;">
+            sdsadf
+            </v-textarea>
           </v-col>
         </v-row>
 
@@ -134,29 +139,8 @@ onMounted(async () => {
 
       showTools.value = !showTools.value;
     }
-  });
+  })
 
-  /*
-  try {
-
-    const VanillaTilt = await import('vanilla-tilt');
-
-    nextTick(() => {
-      VanillaTilt.init(document.querySelector('.browser'), {
-        max: 2,
-        speed: 1000,
-        glare: true,
-        transition: true,
-        scale: 1,
-        gyroscope: false,
-        "max-glare": 0.8,
-      });
-    });
-
-  } catch (error) {
-    throw ('Error loading VanillaTilt', error);
-  }
-  */
 });
 </script>
 
@@ -207,6 +191,14 @@ onMounted(async () => {
 
 .adminBar {
   justify-content: space-between;
+  border-radius: 12px;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  border-left: 1px solid rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(32px);
 }
 
 .titleBar {
@@ -225,10 +217,11 @@ onMounted(async () => {
 .documentArea {
   border-radius: 12px;
   position: relative;
-  border-top: 1px solid rgba(50, 50, 50, 0.5);
-  border-left: 1px solid rgba(50, 50, 50, 0.5);
-  border-bottom: 1px solid rgba(50, 50, 50, 0.5);
-  border-right: 1px solid rgba(50, 50, 50, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  border-left: 1px solid rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+
   background-color: white;
 }
 
@@ -301,6 +294,8 @@ onMounted(async () => {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  
 }
 
 .titleBarActionButtonsContainer .button a {
@@ -314,9 +309,7 @@ onMounted(async () => {
   align-items: center;
   background: rgba(255, 255, 255, 0.05);
   box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 30px;
+  border-radius: 16px;
   padding: 10px;
   letter-spacing: 1px;
   text-decoration: none;
@@ -326,6 +319,11 @@ onMounted(async () => {
   z-index: 1;
   transition: 0.5s;
   backdrop-filter: blur(15px);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  border-left: 1px solid rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .titleBarActionButtonsContainer .button:hover a {
