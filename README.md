@@ -1,6 +1,8 @@
 # Fake GlassBrowser based on Vue.js+Vuetify 3
 Since we were bored to present our screenshots in billions of different ways, here at [umbertogiacobbi.biz](https://umbertogiacobbi.biz) we decided (we need to show some screens for our [aginti.it](https://aginti.it) project) to create our own "fake" next-gen super cool glassmoriphism browser.
 
+This is a typical example of how a startup can same some bucks implementing a software, a custom photo shootin setup in a corner, use open source software and more to overcome the scarsicity of resources. We're all on the same boat guys!
+
 This is a simple **vVue3 + Vuetify3** node.js project so is meant to run locally.
 
 Download it, the background images changes randomly at each load (see them in the backgrounds folder) so each time you have a different background.
@@ -26,8 +28,7 @@ UmbertoGiacobbiDotBiz Founder
 hello@umbertogiacobbi.biz
 
 ## And this is the result as of today
-![image](https://github.com/umbertotechnopreneur/glassBrowser/assets/12001165/0e781b83-42ec-4c03-8b62-c9428998c37d)
-
+![image](https://github.com/umbertotechnopreneur/glassBrowser/assets/12001165/7fc8ad34-37c5-4794-8df2-863ec2aaf6b4)
 
 ## Project setup
 
