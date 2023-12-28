@@ -27,8 +27,10 @@ UmbertoGiacobbiDotBiz Founder
 
 hello@umbertogiacobbi.biz
 
-## And this is the result as of today
+## And this is the result as of today with the admin panel
 ![image](https://github.com/umbertotechnopreneur/glassBrowser/assets/12001165/7fc8ad34-37c5-4794-8df2-863ec2aaf6b4)
+## And this without
+![image](https://github.com/umbertotechnopreneur/glassBrowser/assets/12001165/36cf1073-dc7f-41ab-a078-712481117aca)
 
 ## Project setup
 
