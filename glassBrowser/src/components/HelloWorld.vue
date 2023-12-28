@@ -210,10 +210,6 @@ onMounted(async () => {
   align-items: center;
 }
 
-.titleBar .actionButtons {
-  /* Nothing for now */
-}
-
 .documentArea {
   border-radius: 12px;
   position: relative;
@@ -293,9 +289,7 @@ onMounted(async () => {
   height: 25px;
   display: flex;
   justify-content: center;
-  align-items: center;
-
-  
+  align-items: center; 
 }
 
 .titleBarActionButtonsContainer .button a {
@@ -322,8 +316,8 @@ onMounted(async () => {
 
   border-top: 1px solid rgba(255, 255, 255, 0.6);
   border-left: 1px solid rgba(255, 255, 255, 0.6);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-  border-right: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .titleBarActionButtonsContainer .button:hover a {
@@ -394,9 +388,9 @@ onMounted(async () => {
 /* Change 1*/
 .titleBarActionButtonsContainer .button:nth-child(1)::before,
 .titleBarActionButtonsContainer .button:nth-child(1)::after {
-  background: #1eff45;
-  box-shadow: 0 0 5px #1eff45, 0 0 15px #1eff45, 0 0 30px #1eff45,
-    0 0 60px #1eff45;
+  background: #12c12f;
+  box-shadow: 0 0 5px #12c12f, 0 0 15px #12c12f, 0 0 30px #12c12f,
+    0 0 60px #12c12f;
 }
 
 /* 2 */
