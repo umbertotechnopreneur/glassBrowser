@@ -7,7 +7,7 @@ This is a simple **vVue3 + Vuetify3** node.js project so is meant to run locally
 
 Download it, the background images changes randomly at each load (see them in the backgrounds folder) so each time you have a different background.
 
-To change the "browser content just change the **yourScreenshot.jpg** file you'll find in the images folder.
+To change the "browser content" just change the **yourScreenshot.jpg** file you'll find in the images folder or **drag and drop you image** into the document area.
 
 The aim is not only make it static but also dynamic in case you need to record a short video for a demo.
 
